@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        int low  = 0, high = arr.size() -1, mid, missing;
+
+        while(low <= high){
+            mid = low + (high - low)/2;
+            missing = arr[mid] - (mid + 1); // 7 - (3 + 1) = 4
+            if(missing < k){ // chota ahgya tu ahgy chle jynge
+                low = mid + 1;
+            }
+            else{
+                high = mid -1; 
+            }
+        }
+
+        return high + 1 + k; // we derived the formula (low + k)
+        
+    }
+};
